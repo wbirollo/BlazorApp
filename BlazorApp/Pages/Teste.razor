@@ -1,0 +1,41 @@
+﻿@page "/"
+
+@using MudBlazor.Services
+@using BlazorApp.Data
+@inherits TesteServices
+@inject ISnackbar Snackbar
+
+<h1 style="text-align:center">Teste</h1>
+
+@if (Teste == null)
+{
+    <img src="/images/loading.gif" class="center"/>
+}
+else
+{
+    <div>
+        <MudSelect T="int" Label="Select" AdornmentColor="Color.Secondary">            
+            @foreach (var item in Teste)
+            {
+                <MudSelectItem Value="@item.Id_Sistema" @onfocus="@(() => Snackbar.Add("Id: " + item.Id_Sistema + " - Descrição: " + item.Descricao, Severity.Info))">@item.Descricao</MudSelectItem>
+            }
+        </MudSelect>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
